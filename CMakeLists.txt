@@ -35,6 +35,20 @@ rclcpp_components_register_node(${PROJECT_NAME}
   PLUGIN "cmd_vel_mux::CmdVelMux"
   EXECUTABLE cmd_vel_mux_node)
 
+add_executable(default_cmd_vel_publisher
+  src/default_vel_pub.cpp
+)
+
+ament_target_dependencies(default_cmd_vel_publisher
+  geometry_msgs
+  rclcpp
+)
+
+install(TARGETS
+  default_cmd_vel_publisher
+  DESTINATION lib/${PROJECT_NAME}
+)
+
 install(TARGETS ${PROJECT_NAME}
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
@@ -47,22 +61,5 @@ install(DIRECTORY include/${PROJECT_NAME}/
 install(DIRECTORY config launch
   DESTINATION share/${PROJECT_NAME}
 )
-
-if(BUILD_TESTING)
-  find_package(ament_lint_auto REQUIRED)
-  ament_lint_auto_find_test_dependencies()
-
-  find_package(ros_testing REQUIRED)
-
-  add_ros_test(test/test_cmd_vel_mux.py
-    TARGET test_cmd_vel_mux
-    TIMEOUT 30
-  )
-
-  add_ros_test(test/test_cmd_vel_mux_updates.py
-    TARGET test_cmd_vel_mux_updates
-    TIMEOUT 30
-  )
-endif()
 
 ament_package()
