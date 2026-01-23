@@ -44,7 +44,7 @@ import yaml
 def generate_launch_description():
     share_dir = ament_index_python.packages.get_package_share_directory('cmd_vel_mux')
     
-    params_file = os.path.join(share_dir, 'config', 'ona_params.yaml')
+    params_file = os.path.join(share_dir, 'config', 'ona_simu_params.yaml')
     with open(params_file, 'r') as f:
         params = yaml.safe_load(f)['cmd_vel_mux']['ros__parameters']
 
