@@ -20,13 +20,8 @@ cmd_vel_mux:
           timeout:     0.1
           priority:    0
           short_desc:  "The default cmd_vel, controllers unaware that we are multiplexing cmd_vel should come here"
-        navigation_stack:
-          topic:       "ona2/nav2/cmd_vel"
-          timeout:     0.5
-          priority:    1
-          short_desc:  "Default nav2 stack controller"
         vaive_stack:
-          topic:       "ona2/vaive/cmd_vel"
+          topic:       "ona2/navigation/cmd_vel"
           timeout:     0.1
           priority:    5
           short_desc:  "Vaive's navigation output"
